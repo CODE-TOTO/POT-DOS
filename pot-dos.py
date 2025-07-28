@@ -3,16 +3,22 @@ import time
 
 def reg_and_login():
     registered_user = input("You are not registered yet, please enter your username:")
-    set_root_password = input("Please enter your superuser's password:")
 
-    print("Because of privacy issues, the screen will be cleared next.")
-
-    time.sleep(1.5)
-    os.system("cls")
+    while True:
+        set_root_password = input("Please enter your superuser's password:")
+        if(set_root_password == ''):
+            print("Error: you didn't enter any characters. Please retry.")
+            continue
+        else:
+            print("The setup was successful!")
+            print("Because of privacy issues, the screen will be cleared next.")
+            time.sleep(1.5)
+            os.system("cls")
+            break
 
     login_user = input("You have completed the registration, please enter the username you want to log in to (super user is root):")
     if(login_user == registered_user):
-        print(f"You are logged in {login_user}. Not a superuser")
+        print(f"You are logged in {login_user}. Not a superuser.")
     else:
         while True:
             password = input("Please enter the password of the superuser:")
